@@ -30,6 +30,14 @@
         <?php
         }
         ?>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="faq">
+                <i class="bi bi-question-circle"></i>
+                <span>F.A.Q</span>
+            </a>
+        </li><!-- End FAQ Nav -->
+
     </ul>
 
 </aside><!-- End Sidebar-->
