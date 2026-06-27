@@ -33,6 +33,9 @@ if (uri_string() != "") {
   <link href="<?= base_url() ?>NiceAdmin/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="<?= base_url() ?>NiceAdmin/assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
+  <!-- Select2 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
   <!-- Template Main CSS File -->
   <link href="<?= base_url() ?>NiceAdmin/assets/css/style.css" rel="stylesheet">
 
@@ -55,7 +58,7 @@ if (uri_string() != "") {
 
   <main id="main" class="main">
 
-  <!-- PAGE TITLE -->
+    <!-- PAGE TITLE -->
     <div class="pagetitle">
       <h1><?php echo $hlm ?></h1>
 
@@ -99,6 +102,15 @@ if (uri_string() != "") {
   <script src="<?= base_url() ?>NiceAdmin/assets/vendor/simple-datatables/simple-datatables.js"></script>
   <script src="<?= base_url() ?>NiceAdmin/assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="<?= base_url() ?>NiceAdmin/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <!-- Select2 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+  <!-- Script dari masing-masing halaman -->
+  <?= $this->renderSection('script') ?>
 
   <!-- Template Main JS File -->
   <script src="<?= base_url() ?>NiceAdmin/assets/js/main.js"></script>
