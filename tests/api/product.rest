@@ -1,0 +1,39 @@
+### show
+GET http://localhost:8080/api/products/1
+Authorization: Bearer my-secret-token
+
+
+### create
+POST http://localhost:8080/api/products
+Content-Type: application/json
+Authorization: Bearer my-secret-token
+
+{
+    "nama": "Produk API",
+    "harga": 150000,
+    "jumlah": 10,
+    "foto": "produk-api.jpg"
+}
+
+
+### update
+PUT http://localhost:8080/api/products/1
+Content-Type: application/json
+Authorization: Bearer my-secret-token
+
+{
+    "nama": "Produk API Update",
+    "harga": 175000,
+    "jumlah": 20,
+    "foto": "produk-api-update.jpg"
+}
+
+
+### delete
+DELETE http://localhost:8080/api/products/1
+Authorization: Bearer my-secret-token
+
+
+### unauthorized
+GET http://localhost:8080/api/products
+Authorization: Bearer token-salah
