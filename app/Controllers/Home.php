@@ -17,7 +17,31 @@ class Home extends BaseController
     public function index()
     {
         $products = $this->productModel->findAll();
-        $data['products'] = $products;
+
+        $discount = session()->get('discount');
+        $nominalDiscount = 0;
+
+        if (!empty($discount)) {
+            $nominalDiscount = (int) $discount['nominal'];
+        }
+
+        foreach ($products as $key => $product) {
+            $hargaAsli = (int) $product['harga'];
+            $hargaDiskon = $hargaAsli - $nominalDiscount;
+
+            if ($hargaDiskon < 0) {
+                $hargaDiskon = 0;
+            }
+
+            $products[$key]['harga_asli'] = $hargaAsli;
+            $products[$key]['harga_diskon'] = $hargaDiskon;
+        }
+
+        $data = [
+            'products' => $products,
+            'discount' => $discount,
+            'nominalDiscount' => $nominalDiscount,
+        ];
 
         return view('v_home', $data);
     }
