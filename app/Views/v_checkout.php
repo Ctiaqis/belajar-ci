@@ -78,6 +78,7 @@
                 <tr>
                     <th scope="col">Nama</th>
                     <th scope="col">Harga</th>
+                    <th scope="col">Diskon</th>
                     <th scope="col">Jumlah</th>
                     <th scope="col">Sub Total</th>
                 </tr>
@@ -86,24 +87,47 @@
                 <?php
                 if (!empty($items)) :
                     foreach ($items as $index => $item) :
+                        $hargaAsli = (int) ($item['options']['harga_asli'] ?? $item['price']);
+                        $diskon = (int) ($item['options']['diskon'] ?? 0);
+                        $hargaDiskon = (int) $item['price'];
+                        $subtotal = $hargaDiskon * $item['qty'];
                 ?>
                         <tr>
                             <td><?= $item['name'] ?></td>
-                            <td><?= number_to_currency($item['price'], 'IDR') ?></td>
+
+                            <td>
+                                <?php if ($diskon > 0 && $hargaDiskon < $hargaAsli) : ?>
+                                    <span class="text-danger" style="text-decoration: line-through;">
+                                        <?= number_to_currency($hargaAsli, 'IDR') ?>
+                                    </span>
+                                    <br>
+                                    <span class="fw-bold">
+                                        <?= number_to_currency($hargaDiskon, 'IDR') ?>
+                                    </span>
+                                <?php else : ?>
+                                    <span class="fw-bold">
+                                        <?= number_to_currency($hargaDiskon, 'IDR') ?>
+                                    </span>
+                                <?php endif; ?>
+                            </td>
+
+                            <td><?= number_to_currency($diskon, 'IDR') ?></td>
                             <td><?= $item['qty'] ?></td>
-                            <td><?= number_to_currency($item['price'] * $item['qty'], 'IDR') ?></td>
+                            <td><?= number_to_currency($subtotal, 'IDR') ?></td>
                         </tr>
                 <?php
                     endforeach;
                 endif;
                 ?>
+
                 <tr>
-                    <td colspan="2"></td>
+                    <td colspan="3"></td>
                     <td>Subtotal</td>
                     <td><?= number_to_currency($total, 'IDR') ?></td>
                 </tr>
+
                 <tr>
-                    <td colspan="2"></td>
+                    <td colspan="3"></td>
                     <td>Total</td>
                     <td><span id="total"><?= number_to_currency($total, 'IDR') ?></span></td>
                 </tr>

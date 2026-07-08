@@ -20,6 +20,8 @@ if (session()->getFlashData('success')) {
             echo form_hidden('id', (string) $item['id']);
             echo form_hidden('nama', (string) $item['nama']);
             echo form_hidden('harga', (string) $item['harga_diskon']);
+            echo form_hidden('harga_asli', (string) $item['harga_asli']);
+            echo form_hidden('diskon', (string) $nominalDiscount);
             echo form_hidden('foto', (string) $item['foto']);
             ?>
 

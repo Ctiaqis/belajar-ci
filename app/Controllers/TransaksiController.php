@@ -35,13 +35,23 @@ class TransaksiController extends BaseController
 
     public function cart_add()
     {
+        $hargaAsli = (int) $this->request->getPost('harga_asli');
+        $hargaDiskon = (int) $this->request->getPost('harga');
+        $diskon = (int) $this->request->getPost('diskon');
+
+        if ($hargaDiskon < 0) {
+            $hargaDiskon = 0;
+        }
+
         $this->cart->insert([
             'id'      => $this->request->getPost('id'),
             'qty'     => 1,
-            'price'   => $this->request->getPost('harga'),
+            'price'   => $hargaDiskon,
             'name'    => $this->request->getPost('nama'),
             'options' => [
-                'foto' => $this->request->getPost('foto')
+                'foto'       => $this->request->getPost('foto'),
+                'harga_asli' => $hargaAsli,
+                'diskon'     => $diskon
             ]
         ]);
 
@@ -197,11 +207,13 @@ class TransaksiController extends BaseController
 
         // insert transaction detail
         foreach ($cartItems as $item) {
+            $diskon = (int) ($item['options']['diskon'] ?? 0);
+
             $this->transactionDetailModel->insert([
                 'transaction_id' => $transactionId,
                 'product_id'     => $item['id'],
                 'jumlah'         => $item['qty'],
-                'diskon'         => 0,
+                'diskon'         => $diskon,
                 'subtotal_harga' => $item['qty'] * $item['price']
             ]);
         }
