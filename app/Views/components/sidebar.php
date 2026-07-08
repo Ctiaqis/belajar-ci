@@ -27,6 +27,14 @@
                     <span>Produk</span>
                 </a>
             </li><!-- End Produk Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="diskon">
+                    <i class="bi bi-percent"></i>
+                    <span>Diskon</span>
+                </a>
+            </li><!-- End Diskon Nav -->
+
         <?php
         }
         ?>
