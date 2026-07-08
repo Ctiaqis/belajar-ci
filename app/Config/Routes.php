@@ -48,5 +48,6 @@ $routes->get('ajax/destinations', 'TransaksiController::destinations', ['filter'
 $routes->get('ajax/costs', 'TransaksiController::costs', ['filter' => 'auth']);
 
 $routes->resource('api/products', ['controller' => 'Api\ProdukController']);
+$routes->resource('api/discounts', ['controller' => 'Api\DiscountController']);
 
 $routes->get('api/transactions', 'Api\TransaksiController::index');
