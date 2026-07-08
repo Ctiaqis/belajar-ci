@@ -27,6 +27,11 @@ $routes->group('diskon', ['filter' => 'auth'], function ($routes) {
     $routes->get('delete/(:any)', 'DiskonController::delete/$1');
 });
 
+$routes->group('pembelian', ['filter' => 'auth'], function ($routes) {
+    $routes->get('', 'PembelianController::index');
+    $routes->get('status/(:any)', 'PembelianController::updateStatus/$1');
+});
+
 $routes->group('keranjang', ['filter' => 'auth'], function ($routes) {
     $routes->get('', 'TransaksiController::index');
     $routes->post('', 'TransaksiController::cart_add');

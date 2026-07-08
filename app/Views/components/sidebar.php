@@ -35,6 +35,13 @@
                 </a>
             </li><!-- End Diskon Nav -->
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="pembelian">
+                    <i class="bi bi-bag-check"></i>
+                    <span>Pembelian</span>
+                </a>
+            </li><!-- End Pembelian Nav -->
+
         <?php
         }
         ?>
